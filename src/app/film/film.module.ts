@@ -4,6 +4,7 @@ import { FilmComponent } from './film.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { routes } from './film.routing';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 
@@ -13,7 +14,8 @@ import { routes } from './film.routing';
   ],
   imports: [
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatProgressBarModule
   ]
 })
 export class FilmModule { }
