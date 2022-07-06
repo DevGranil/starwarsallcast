@@ -10,6 +10,21 @@
             </div>
             <ng-container  *ngIf="!fm.error">
                 <h1>{{fm.title}}</h1>
+                <div class="category">
+                    <div class="basic-item">
+                        <span><strong>Director:</strong> {{fm.director}}</span>
+                    </div>
+                    <div class="basic-item">
+                        <span><strong>Release date:</strong> {{fm.release_date}}</span>
+                    </div>
+                    <div class="basic-item">
+                        <span><strong>Producers:</strong> {{fm.producer}}</span>
+                    </div>
+                    <div class="basic-item">
+                        <span><strong>Opening crawl:</strong> {{fm.opening_crawl}}</span>
+                    </div>
+                </div>
+
                 {{fm | json}}
             </ng-container>
            
