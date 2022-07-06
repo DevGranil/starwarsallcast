@@ -9,6 +9,9 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./typeahead.component.scss']
 })
 export class TypeaheadComponent implements OnInit {
+
+  searching: boolean = false;
+  searchFailed: boolean = false;
   
   constructor(
     private apiService: ApiService
@@ -24,18 +27,17 @@ export class TypeaheadComponent implements OnInit {
   text$.pipe(
     debounceTime(200),
     distinctUntilChanged(),
-    // tap(() => this.searching = true),
+    tap(() => this.searching = true),
     switchMap(term =>
       this.apiService.searchCharacter(term).pipe(
-        
         tap((data) =>console.log(data) ),
-        // tap(() => this.searchFailed = false),
+        tap(() => this.searchFailed = false),
         catchError(() => {
-          // this.searchFailed = true;
+          this.searchFailed = true;
           return of([]);
         }))
     ),
-    // tap(() => this.searching = false)
+    tap(() => this.searching = false)
   );
 
 

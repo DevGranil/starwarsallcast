@@ -1,0 +1,13 @@
+.search{
+    padding-top: 100px;
+    &__inner-wrapper{
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+
+
+        h1{
+            text-align: center;
+        }
+    }
+}
