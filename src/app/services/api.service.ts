@@ -21,4 +21,10 @@ export class ApiService {
     return this.http.get(`${environment.api}/people/?search=${name}`).pipe(map((response: any) => response['results'][0]))
 
   }
+
+
+  getFeaturedFilm(id: number){
+    return this.http.get(`${environment.api}/filsm${1}`)
+
+  }
 }

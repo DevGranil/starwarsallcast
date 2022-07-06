@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+
+
+<section class="portal__container" [@routeAnim]="prepareRoute(outlet)" >
+  <router-outlet #outlet="outlet"></router-outlet>
+
+</section>
