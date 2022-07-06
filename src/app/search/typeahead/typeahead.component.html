@@ -1,0 +1,19 @@
+<div class="ta">
+    <input 
+    type="text" 
+    class="ta__input" 
+    placeholder="The force is with the search.."
+    [ngbTypeahead]="search" 
+    [resultTemplate]="rt"
+    (selectItem)="select($event)" 
+    [inputFormatter]="formatter" 
+    placement="bottom-start"/>
+</div>
+  <ng-template #rt let-r="result">
+    <!-- <a href="">{{r.name}}</a> -->
+    <div>{{r.name}}</div>
+      <!-- <a *ngIf="!r.handle" [routerLink]="['find-insurance', t, r.itemId]">{{r.itemName}}</a>
+      <a *ngIf="r.handle" routerLink="{{r.itemHandle}}">{{r.itemName}}  
+          <span class="label label-primary">Provider </span>
+    </a> -->
+  </ng-template>
