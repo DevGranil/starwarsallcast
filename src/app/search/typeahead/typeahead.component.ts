@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICharacter } from 'src/app/models/character.model';
 import { catchError, debounceTime, distinctUntilChanged, Observable, of, switchMap, tap } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-typeahead',
@@ -9,12 +10,12 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./typeahead.component.scss']
 })
 export class TypeaheadComponent implements OnInit {
-
   searching: boolean = false;
   searchFailed: boolean = false;
   
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,9 +30,13 @@ export class TypeaheadComponent implements OnInit {
     distinctUntilChanged(),
     tap(() => this.searching = true),
     switchMap(term =>
-      this.apiService.searchCharacter(term).pipe(
-        tap((data) =>console.log(data) ),
-        tap(() => this.searchFailed = false),
+      this.apiService.searchCharacters(term).pipe(
+        tap((data) => {
+          console.log(data);
+          this.searchFailed = false 
+
+          if(data.length == 0) this.searchFailed = true
+        }),
         catchError(() => {
           this.searchFailed = true;
           return of([]);
@@ -43,20 +48,9 @@ export class TypeaheadComponent implements OnInit {
 
   formatter = (result: ICharacter) => result.name;
 
-
-  click(event: any){
-    // this.click$.next(event.target.value)
-  }
-
-
   select = (event: any) => {
-    debugger;
-    // let item: ICharacter = event.item
-    // if (item.itemType == 'provider') {
-    //   this.router.navigate([item.itemHandle])
-    // } else {
-    //   this.router.navigate(['/find-insurance', this.model, item.itemId])
-    // }
+    let item: ICharacter = event.item
+    this.router.navigate([item.name])
   }
 
 }

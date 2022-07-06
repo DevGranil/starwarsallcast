@@ -9,6 +9,8 @@
     [inputFormatter]="formatter" 
     placement="bottom-start"/>
 </div>
+<mat-progress-bar *ngIf="searching" mode="indeterminate"></mat-progress-bar>
+<p *ngIf="searchFailed">No matches found.</p>
   <ng-template #rt let-r="result">
     <span>{{r.name}}</span>
   </ng-template>

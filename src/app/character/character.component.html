@@ -1,1 +1,12 @@
-<p>character works!</p>
+
+<div class="c">
+    <div class="c__inner-wrapper">
+        <div class="c__card" *ngIf="character$ | async as character">
+            <h1>{{character.name}}</h1>
+            <h4>Basic</h4>
+            {{character | json}}
+        </div>
+    </div>
+</div>
+
+

@@ -6,6 +6,7 @@ import { routes } from './search.routing';
 import { TypeaheadComponent } from './typeahead/typeahead.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -15,10 +16,10 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     TypeaheadComponent
   ],
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
     NgbTypeaheadModule,
+    MatProgressBarModule
   ],
   exports: []
 })

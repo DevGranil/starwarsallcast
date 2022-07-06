@@ -13,7 +13,12 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  searchCharacter(name: string): Observable<ICharacter[]>{
+  searchCharacters(name: string): Observable<ICharacter[]>{
     return this.http.get(`${environment.api}/people/?search=${name}`).pipe(map((response: any) => response['results']))
+  }
+
+  getCharacter(name: string): Observable<ICharacter>{
+    return this.http.get(`${environment.api}/people/?search=${name}`).pipe(map((response: any) => response['results'][0]))
+
   }
 }

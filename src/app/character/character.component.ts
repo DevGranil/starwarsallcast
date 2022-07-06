@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ICharacter } from '../models/character.model';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-character',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharacterComponent implements OnInit {
 
-  constructor() { }
+  character$: Observable<ICharacter>
+
+  constructor(
+    private apiSevice: ApiService,
+    private activeRouter: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    let {character} =  this.activeRouter.snapshot.params;
+    this.character$ = this.apiSevice.getCharacter(character)
+   
   }
 
 }
