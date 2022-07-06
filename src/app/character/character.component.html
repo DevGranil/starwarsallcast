@@ -1,6 +1,10 @@
 
 <div class="c">
+    <a [routerLink]="['/']" class="c__back">
+        <img src="../../assets/images/circle-arrow-left-solid.svg" alt=""><span>Back to search</span>
+    </a>
     <div class="c__inner-wrapper">
+        <mat-progress-bar *ngIf="!(character$ | async)" mode="indeterminate"></mat-progress-bar>
         <div class="c__card" *ngIf="character$ | async as character">
             <h1>{{character.name}}</h1>
             <h3>Basics</h3>
@@ -25,9 +29,16 @@
                 </div>
             </div>
        
-            <!-- {{character | json}} -->
+            {{character | json}}
         </div>
+
+        <h3>Featured In</h3>
+
+        
+        
+
     </div>
+    
 </div>
 
 
