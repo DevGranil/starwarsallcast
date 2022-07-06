@@ -29,14 +29,14 @@
             margin-bottom: 10px;
         }
 
-        .basic{
+        .category{
             padding: 20px;
             background-color: rgb(239, 239, 239);
             border-radius: 10px;
             display: flex;
             flex-wrap: wrap;
          
-            &-item{
+            .basic-item{
                 display: flex;
                 align-items: center;
                 margin: 5px 20px 20px 0;
@@ -51,11 +51,33 @@
                     letter-spacing: 0.5px;
                 }
             }
+
+            .film-item{
+                margin: 10px ;
+                border: none;
+                background-color: transparent;
+
+                &:hover{
+                    animation: shakeButon 1000ms 1;
+                }
+                
+               
+            }
         }
 
   
 
     }
+}
+
+@keyframes shakeButon {
+    0%{transform: translateX(-10px)}
+    10%{transform: translateX(10px)}
+    20%{transform: translateX(-5px)}
+    30%{transform: translateX(5px)}
+    100%{transform: translateX(0px)}
+ 
+    
 }
 
 

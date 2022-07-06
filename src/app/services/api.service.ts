@@ -25,7 +25,7 @@ export class ApiService {
 
 
   getFeaturedFilm(id: number): Observable<IFilm>{
-    return this.http.get(`${environment.api}/filsm${1}`).pipe(map((response: any) => response))
+    return this.http.get(`${environment.api}/films/${id}`).pipe(map((response: any) => response))
 
   }
 }

@@ -8,7 +8,7 @@
         <div class="c__card" *ngIf="character$ | async as character">
             <h1>{{character.name}}</h1>
             <h3>Basics</h3>
-            <div class="basic">
+            <div class="category">
                 <div class="basic-item">
                     <img src="../../assets/images/ruler-vertical-solid.svg" alt=""><span>Height: {{character.height}}</span>
                 </div>
@@ -28,13 +28,17 @@
                     <img src="../../assets/images/cake-candles-solid.svg" alt=""><span>Birth year: {{character.birth_year}}</span>
                 </div>
             </div>
-       
-            {{character | json}}
+    
+            <h3 >Featured In</h3>
+            <div class="category">
+                <button class="film-item" app-featured-in  *ngFor="let i of character.films" [filmUrl]="i" (click)="filmClicked(i)"></button>
+            </div>
+            
         </div>
 
-        <h3>Featured In</h3>
+   
 
-        
+
         
 
     </div>

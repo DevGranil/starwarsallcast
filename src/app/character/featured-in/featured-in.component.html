@@ -1,1 +1,4 @@
-<p>featured-in works!</p>
+<span class="film" *ngIf="film | async as fm" >
+{{fm.title}}
+
+</span>
