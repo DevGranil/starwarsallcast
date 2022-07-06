@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ICharacter } from '../models/character.model';
 import { IFilm } from '../models/film.model';
@@ -9,6 +9,8 @@ import { IFilm } from '../models/film.model';
   providedIn: 'root'
 })
 export class ApiService {
+
+  error = new Subject()
 
   constructor(
     private http: HttpClient
@@ -25,7 +27,10 @@ export class ApiService {
 
 
   getFeaturedFilm(id: number): Observable<IFilm>{
-    return this.http.get(`${environment.api}/films/${id}`).pipe(map((response: any) => response))
+    return this.http.get(`${environment.api}/films/${id}`).pipe
+    (map((response: any) => response), 
+    catchError((err, caught) => of(err))
+    )
 
   }
 }

@@ -1,1 +1,14 @@
-<p>film works!</p>
+<div class="film">
+    <div class="film__inner-wrapper">
+        <div class="f__card" *ngIf="film | async as fm">
+            <div class="error" *ngIf="fm.error">
+                Title does not exist
+            </div>
+            <ng-container  *ngIf="!fm.error">
+                <h1>{{fm.title}}</h1>
+                {{fm | json}}
+            </ng-container>
+           
+        </div>
+    </div>
+</div>

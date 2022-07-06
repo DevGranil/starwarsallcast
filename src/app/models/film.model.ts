@@ -15,6 +15,7 @@
         created: Date;
         edited: Date;
         url: string;
+        error: any
     }
 
 
