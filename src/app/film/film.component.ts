@@ -11,7 +11,7 @@ import { ApiService } from '../services/api.service';
 })
 export class FilmComponent implements OnInit {
 
-  film: Observable<IFilm>
+  film$: Observable<IFilm>
 
   constructor(
     private apiService: ApiService,
@@ -22,7 +22,7 @@ export class FilmComponent implements OnInit {
 
     let {id} = this.activeRoute.snapshot.params
 
-    this.film = this.apiService.getFeaturedFilm(id).pipe()
+    this.film$ = this.apiService.getFeaturedFilm(id).pipe()
     }
 
 }

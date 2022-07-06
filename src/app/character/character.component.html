@@ -4,35 +4,43 @@
         <img src="../../assets/images/circle-arrow-left-solid.svg" alt=""><span>Back to search</span>
     </a>
     <div class="c__inner-wrapper">
-        <mat-progress-bar *ngIf="!(character$ | async)" mode="indeterminate"></mat-progress-bar>
+        <mat-progress-bar *ngIf="!(character$ | async) && !doesNotExist" mode="indeterminate"></mat-progress-bar>
         <div class="c__card" *ngIf="character$ | async as character">
-            <h1>{{character.name}}</h1>
-            <h3>Basics</h3>
-            <div class="category">
-                <div class="basic-item">
-                    <img src="../../assets/images/ruler-vertical-solid.svg" alt=""><span>Height: {{character.height}}</span>
-                </div>
-                <div class="basic-item">
-                    <img src="../../assets/images/weight-scale-solid.svg" alt=""><span>Mass:{{character.mass}}</span>
-                </div>
-                <div class="basic-item">
-                    <img src="../../assets/images/crosshairs-solid.svg" alt=""><span>Hair colour: {{character.hair_color}}</span>
-                </div>
-                <div class="basic-item">
-                    <img src="../../assets/images/venus-mars-solid.svg" alt=""><span>Gender: {{character.gender}}</span>
-                </div>
-                <div class="basic-item">
-                    <img src="../../assets/images/eye-solid.svg" alt=""><span>Eye colour: {{character.eye_color}}</span>
-                </div>
-                <div class="basic-item">
-                    <img src="../../assets/images/cake-candles-solid.svg" alt=""><span>Birth year: {{character.birth_year}}</span>
-                </div>
+            <div class="error" *ngIf="doesNotExist">
+                Character does not exist
             </div>
-    
-            <h3 >Featured In</h3>
-            <div class="category">
-                <button class="film-item" app-featured-in  *ngFor="let i of character.films" [filmUrl]="i" (click)="filmClicked(i)"></button>
-            </div>
+
+            <ng-container *ngIf="!doesNotExist">
+                <h1>{{character.name}}</h1>
+                <h3>Basics</h3>
+                <div class="category">
+                    <div class="basic-item">
+                        <img src="../../assets/images/ruler-vertical-solid.svg" alt=""><span>Height: {{character.height}}</span>
+                    </div>
+                    <div class="basic-item">
+                        <img src="../../assets/images/weight-scale-solid.svg" alt=""><span>Mass:{{character.mass}}</span>
+                    </div>
+                    <div class="basic-item">
+                        <img src="../../assets/images/crosshairs-solid.svg" alt=""><span>Hair colour: {{character.hair_color}}</span>
+                    </div>
+                    <div class="basic-item">
+                        <img src="../../assets/images/venus-mars-solid.svg" alt=""><span>Gender: {{character.gender}}</span>
+                    </div>
+                    <div class="basic-item">
+                        <img src="../../assets/images/eye-solid.svg" alt=""><span>Eye colour: {{character.eye_color}}</span>
+                    </div>
+                    <div class="basic-item">
+                        <img src="../../assets/images/cake-candles-solid.svg" alt=""><span>Birth year: {{character.birth_year}}</span>
+                    </div>
+                </div>
+        
+                <h3 >Featured In</h3>
+
+                <div class="category">
+                    <button class="film-item" app-featured-in  *ngFor="let i of character.films" [filmUrl]="i" (click)="filmClicked(i)"></button>
+                </div>
+            </ng-container>
+        
             
         </div>
 

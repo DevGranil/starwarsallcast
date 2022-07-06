@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, Subject } from 'rxjs';
+import { catchError, map, Observable, of, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ICharacter } from '../models/character.model';
 import { IFilm } from '../models/film.model';
@@ -10,7 +10,9 @@ import { IFilm } from '../models/film.model';
 })
 export class ApiService {
 
-  error = new Subject()
+
+  //character api doesn't return an error
+  characterDoesNotExist = new Subject<boolean>()
 
   constructor(
     private http: HttpClient
@@ -21,7 +23,14 @@ export class ApiService {
   }
 
   getCharacter(name: string): Observable<ICharacter>{
-    return this.http.get(`${environment.api}/people/?search=${name}`).pipe(map((response: any) => response['results'][0]))
+    return this.http.get(`${environment.api}/people/?search=${name}`).pipe(map((response: any) => {
+      if(response['results'].length > 0){
+        return response['results'][0]
+      } else {
+        this.characterDoesNotExist.next(true)
+        return throwError('error')
+      }
+    }))
 
   }
 

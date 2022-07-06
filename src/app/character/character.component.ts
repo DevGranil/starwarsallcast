@@ -11,7 +11,8 @@ import { ApiService } from '../services/api.service';
 })
 export class CharacterComponent implements OnInit {
 
-  character$: Observable<ICharacter>
+  character$: Observable<ICharacter>;
+  doesNotExist: boolean = false;
 
   constructor(
     private apiSevice: ApiService,
@@ -22,6 +23,8 @@ export class CharacterComponent implements OnInit {
   ngOnInit(): void {
     let {character} =  this.activeRouter.snapshot.params;
     this.character$ = this.apiSevice.getCharacter(character)
+
+    this.apiSevice.characterDoesNotExist.subscribe(state => this.doesNotExist = true)
    
   }
 

@@ -1,6 +1,10 @@
 <div class="film">
+    <a [routerLink]="['/']" class="film__back">
+        <img src="../../assets/images/circle-arrow-left-solid.svg" alt=""><span>Back to search</span>
+    </a>
     <div class="film__inner-wrapper">
-        <div class="f__card" *ngIf="film | async as fm">
+        <mat-progress-bar *ngIf="!(film$ | async)" mode="indeterminate"></mat-progress-bar>
+        <div class="film__card" *ngIf="film$ | async as fm">
             <div class="error" *ngIf="fm.error">
                 Title does not exist
             </div>

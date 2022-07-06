@@ -15,6 +15,7 @@ export interface ICharacter {
         created: Date;
         edited: Date;
         url: string;
+        error: any
     }
 
     // export interface RootObject {
