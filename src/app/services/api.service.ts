@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ICharacter } from '../models/character.model';
+import { IFilm } from '../models/film.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,8 @@ export class ApiService {
   }
 
 
-  getFeaturedFilm(id: number){
-    return this.http.get(`${environment.api}/filsm${1}`)
+  getFeaturedFilm(id: number): Observable<IFilm>{
+    return this.http.get(`${environment.api}/filsm${1}`).pipe(map((response: any) => response))
 
   }
 }
