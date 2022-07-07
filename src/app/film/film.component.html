@@ -25,7 +25,11 @@
                     </div>
                 </div>
 
-                {{fm | json}}
+                <h3>Cast</h3>
+
+                <div class="category dis-flex">
+                    <button class="cast-item" app-cast *ngFor="let i of fm.characters" [castUrl]="i"></button>
+                </div>
             </ng-container>
            
         </div>

@@ -31,7 +31,13 @@ export class ApiService {
         return throwError('error')
       }
     }))
+  }
 
+  getCharacterById(id: number): Observable<ICharacter>{
+    return this.http.get(`${environment.api}/people/${id}`).pipe
+    (map((response: any) => response), 
+    catchError((err, caught) => of(err))
+    )
   }
 
 

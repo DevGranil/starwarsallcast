@@ -1,0 +1,5 @@
+<a class="film" *ngIf="cast$ | async as c" [routerLink]="['/',c.name]">
+    {{c.name}}
+    
+</a>
+    

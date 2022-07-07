@@ -5,12 +5,14 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { routes } from './film.routing';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CastComponent } from './cast/cast.component';
 
 
 
 @NgModule({
   declarations: [
-    FilmComponent
+    FilmComponent,
+    CastComponent
   ],
   imports: [
     SharedModule,
