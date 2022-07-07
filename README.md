@@ -1,6 +1,10 @@
 # StarwarsAllcast
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.1.
+A star wars cast search tool that grabs cast info and featured films. Vice Versa the film route will redirect to a cast member. 
+
+# Tech
+
+Lazy loading modules, Bootstap Typeahead, Material and RxJS
 
 ## Development server
 
