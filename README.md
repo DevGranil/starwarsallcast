@@ -4,7 +4,7 @@ A star wars cast search tool that grabs cast info and featured films. Vice Versa
 
 # Tech
 
-Lazy loading modules, Bootstap Typeahead, Material and RxJS
+Lazy loading modules, Bootstrap Typeahead, Material and RxJS
 
 ## Development server
 
