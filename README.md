@@ -1,6 +1,8 @@
 # StarwarsAllcast
 
-A star wars cast search tool that grabs cast info and featured films. Vice Versa the film route will redirect to a cast member. 
+A star wars cast search tool that returns character information including what films they're in. The film information will display the cast and you can get character information by clicking on them. 
+
+Note the star wars api can get laggy. 
 
 # Tech
 
